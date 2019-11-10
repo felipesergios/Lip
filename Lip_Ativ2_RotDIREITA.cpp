@@ -28,7 +28,7 @@ struct Img{
 };
 void abre_arquivo(char nome[SMAX],Img& img);
 
-void converte_para_cinza(Img img_in, Img& img_out);
+void rot_direita(Img img_in, Img& img_out);
 
 void salva_arquivo(char nome[SMAX], Img img);
 
@@ -124,7 +124,7 @@ arq.open(nome);
 
     }
 }
-void converte_para_cinza(Img img, Img& img_out){
+void rot_direita(Img img, Img& img_out){
 
 
 
