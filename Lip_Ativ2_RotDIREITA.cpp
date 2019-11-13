@@ -47,7 +47,7 @@ bool confirma;
     cout << "Entre com o nome do novo arquivo" << endl;
     cin.getline(nome_novo, SMAX);
 
-    converte_para_cinza(img , img_out);
+    rot_direita(img , img_out);
 
     salva_arquivo(nome_novo, img_out);
 
@@ -66,12 +66,12 @@ char p[] = "P3";
         //Todo code aqui
             arq.getline(img.Tipo,SMAX); //Ler Primeira Linha
             if(strcmp(img.Tipo,p) == 0){
-            arq >> img.Largura; // Ler Segunda Linha
-            arq >> img.Altura;  // Ler Terceira Linha
+            arq >> img.Largura; // Ler Segunda Linha que é a quantidade de coluna.
+            arq >> img.Altura;  // Ler Terceira Linha que é a quantidade de linhas.
             arq >> img.MaxPixel; // Ler Quarta Linha
 
-            for(int i = 0; i<img.Largura; i++){
-                for(int j =0; j<img.Altura; j++){
+            for(int i = 0; i<img.Altura; i++){
+                for(int j =0; j<img.Largura; j++){
                     arq >> img.Matriz[i][j].R;
                     arq >> img.Matriz[i][j].G;
                     arq >> img.Matriz[i][j].B;
@@ -108,8 +108,8 @@ arq.open(nome);
             arq << img.Altura << endl; //Escreve na 3º linha
             arq << img.MaxPixel << endl; //Escreve na 4º linha
 
-            for(int i = 0; i<img.Largura; i++){
-                for(int j =0; j<img.Altura; j++){
+            for(int i = 0; i<img.Altura; i++){
+                for(int j =0; j<img.Largura; j++){
                     arq << img.Matriz[i][j].R << " " <<  img.Matriz[i][j].G  << " " << img.Matriz[i][j].B <<" ";
 
 
@@ -128,19 +128,19 @@ void rot_direita(Img img, Img& img_out){
 
 
 
-int media = 0;
+
 
                 strcpy(img_out.Tipo,img.Tipo);//copia nome
-                img_out.Largura  = img.Largura;
-                img_out.Altura = img.Altura;
+                img_out.Largura  = img.Altura; // atribui a quantidade de linhas à quantidade de colunas da img_out
+                img_out.Altura = img.Largura;
                 img_out.MaxPixel = img.MaxPixel;
 
-            for(int i = 0; i<img.Largura; i++){
-                for(int j =0; j<img.Altura; j++){
-          //Para rotacionar para esquerda é so trocar i por j.
-                img_out.Matriz[i][j].R = img.Matriz[img.Largura - j][i].R; 
-                img_out.Matriz[i][j].G = img.Matriz[img.Largura - j][i].G;
-                img_out.Matriz[i][j].B = img.Matriz[img.Largura - j][i].B;
+            for(int i = 0; i<img.Altura; i++){
+                for(int j = 0; j<img.Largura; j++){
+
+                img_out.Matriz[j][img.Altura-i].R = img.Matriz[i][j].R;
+                img_out.Matriz[j][img.Altura-i].G = img.Matriz[i][j].G;
+                img_out.Matriz[j][img.Altura-i].B = img.Matriz[i][j].B;
 
                 }
 
