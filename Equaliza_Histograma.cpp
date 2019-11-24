@@ -1,4 +1,4 @@
-void equaliza_histograma(Img img, Img img_out){
+void equaliza_histograma(Img img, Img& img_out){
 
 
 int vetor_R [256] = {};
