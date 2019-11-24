@@ -34,7 +34,7 @@ void salva_arquivo(char nome[SMAX], Img img);
 void converte_para_cinza(Img img_in, Img& img_out);
 void erosao(Img img, Img& img_out);
 void Conta_vetor(Img img,int canalR[], int canalG[],int canalB[]);
-void equaliza_histograma(Img img, Img img_out);
+void equaliza_histograma(Img img, Img& img_out);
 int soma_P(int v[],int n);
 
 int main(){
@@ -327,7 +327,7 @@ int soma_p(int v[],int n)
 }
 
 
-void equaliza_histograma(Img img, Img img_out){
+void equaliza_histograma(Img img, Img& img_out){
 int vetor_R [256] = {};
 int vetor_G [256] = {};
 int vetor_B [256] = {};
@@ -370,9 +370,7 @@ float s = (img.MaxPixel/float(img.Altura*img.Largura));
        int somatorio_R = 0;
        int somatorio_G = 0;
        int somatorio_B = 0;
-       int k = 0;
-       int l = 0;
-       int a = 0;
+       
        int i = 0;
        int j = 0;
 
@@ -382,6 +380,7 @@ float s = (img.MaxPixel/float(img.Altura*img.Largura));
             somatorio_R=soma_p(vetor_R,img.Matriz[i][j].R);
             somatorio_G=soma_p(vetor_G,img.Matriz[i][j].G);
             somatorio_B=soma_p(vetor_B,img.Matriz[i][j].B);
+                
             img_out.Matriz[i][j].R = (s*somatorio_R);
             img_out.Matriz[i][j].G = (s*somatorio_G);
             img_out.Matriz[i][j].B = (s*somatorio_B);
