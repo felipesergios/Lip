@@ -55,7 +55,7 @@ int vetor_B [256] = {};
 
                 img_out.Matriz[i][j].R = ((255/img.Altura*img.Largura)*somatorio_R);
 
-                somatorio_R = 0;
+                
 
                 for(int l = 0; l<=img.Matriz[i][j].G; l++) {
 
@@ -66,7 +66,7 @@ int vetor_B [256] = {};
 
                 img_out.Matriz[i][j].G = ((255/img.Altura*img.Largura)*somatorio_G);
 
-                somatorio_G =0;
+                
 
                 for(int a = 0; a<=img.Matriz[i][j].B; a++) {
 
@@ -76,7 +76,7 @@ int vetor_B [256] = {};
                 }
                 img_out.Matriz[i][j].B = ((255/img.Altura*img.Largura)*somatorio_B);
 
-                somatorio_B =0;
+               
 
 
 
