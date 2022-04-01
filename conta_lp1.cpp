@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
 void conta_valores(int valor,int indice){
@@ -22,16 +23,16 @@ int main() {
     float porcent = 0;
     while(cin>>ws>>x){
         
-        if(x>0 and x<=25){
+        if(x>=0 and x<25){
             indice++;
         }
-        if(x>25 and x<=50){
+        if(x>=25 and x<50){
             indice2++;
         }
-        if(x>50 and x<=75){
+        if(x>=50 and x<75){
             indice3++;
         }
-        if(x>75 and x<=100){
+        if(x>=75 and x<100){
             indice4++;
         }
         
@@ -47,8 +48,7 @@ int main() {
     cout<<"Fora de intervalo : "<<indice5<<endl;
     valor_total=indice+indice2+indice3+indice4+indice5;
     cout<<"Valor de todos os elementos "<<valor_total;
-    porcent=
+    porcent=((indice*1.0)/valor_total)*100;
+    cout<<setprecision(4)<<"Porcentagem do valor I: "<<porcent;
     return 0;    
 }
-
-
